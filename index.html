@@ -19,9 +19,102 @@
                     <img class="popup__image" src="#" alt>
                 </div>
             </div>
-        </div>
         <div class="popup__paragraph-content">
             <p class="popup__paragraph"></p>
         </div>
     </div>
+    <form action="#" class="popup__container">
+        <h2 class="popup__subtitle">Nuevo lugar</h2>
+        <fieldset class="popup__content">
+            <input type="text" class="popup__input popup__input_name" required placeholder="Título">
+            <input type="text" class="popup__input popup__input_about" required placeholder="Enlace a la imagen">
+        </fieldset>
+        <fieldset class="popup__content">
+            <button type="submit" class="popup__button popup__button_save" style="display: none;">Guardar</button>
+            <button type="button" class="popup__button popup__button_add" disabled style="display: block;">Guardar</button>
+        </fieldset>
+    </form>
+    </div>
+    <header class="header">
+        <img src="./images/Vector.svg" alt="logo-page" class="header__image">
+    </header>
+    <main class="main">
+        <div class="main__profile">
+            <div class="main__content-image">
+                <img src="./images/Dayana Dávila-Photoroom.jpg" alt="profile-image" class="main__profile-image">
+            </div>
+        <div class="main__content-paragraph">
+            <p class="main__paragraph main__paragraph_name">Dayana Dávila</p>
+            <p class="main__paragraph main__paragraph_about">Estudiante</p>
+            <button type="button" class="main__button main__about_edit">X</button>
+        </div>
+        <button type="button" class="main__button main__button_add">+</button>
+        </div>
+        <div class="main__gallery">
+            <div class="main__gallery-card">
+            <img class="main__gallery-image" src="./images/valle_yosemite.png" alt="Valle de Yosemite">
+            <button type="button" class="main__button main__button_trash"></button>
+            <div class="main__gallery-content">
+                <p class="main__gallery-paragraph">Valle de Yosemite</p>
+                <button type="button" class="main__button main__button_like"></button>
+            </div>
+        </div>
+            <div class="main__gallery-card">
+                <img class="main__gallery-image" src="./images/lago_louise.png" alt="Lago Louise">
+            <button type="button" class="main__button main__button_trash"></button>
+            <div class="main__gallery-content">
+                <p class="main__gallery-paragraph">Lago Louise</p>
+                <button type="button" class="main__button main__button_like"></button>
+            </div>
+            </div>
+            <div class="main__gallery-card">
+                <img class="main__gallery-image" src="./images/montanas_calvas.png" alt="Montañas Calvas">
+            <button type="button" class="main__button main__button_trash"></button>
+            <div class="main__gallery-content">
+                <p class="main__gallery-paragraph">Montañas Calvas</p>
+                <button type="button" class="main__button main__button_like"></button>
+            </div>
+            </div>
+            <div class="main__gallery-card">
+                <img class="main__gallery-image" src="./images/latemar.png" alt="Latemar">
+            <button type="button" class="main__button main__button_trash"></button>
+            <div class="main__gallery-content">
+                <p class="main__gallery-paragraph">Latemar</p>
+                <button type="button" class="main__button main__button_like"></button>
+            </div>
+            </div>
+            <div class="main__gallery-card">
+                <img class="main__gallery-image" src="./images/vanois_national_park.png" alt="Vanois National Park">
+                <button type="button" class="main__button main__button_trash"></button>
+                <div class="main__gallery-content">
+                    <p class="main__gallery-paragraph">Vanois National Park</p>
+                    <button type="button" class="main__button main__button_like"></button>
+                </div>
+            </div>
+            <div class="main__gallery-card">
+                <img class="main__gallery-image" src="./images/lago_di_braies.png" alt="Lago di Braies">
+                <button type="button" class="main__button main__button_trash"></button>
+                <div class="main__gallery-content">
+                    <p class="main__gallery-paragraph">Lago di Braies</p>
+                    <button type="button" class="main__button main__button_like"></button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <template id="main__template">
+        #document-fragment 
+        <div class="main__gallery-card">
+            <img class="main__gallery-image">
+            <button type="button" class="main__button main__button_trash"></button>
+            <div class="main__gallery-content">
+                <p class="main__gallery-paragraph"></p>
+                <button type="button" class="main__button main__button_like"></button>
+            </div>
+        </div>
+    </template>
+    <footer class="footer">
+        <p class="footer__copyright"> 2025 Around The U.S.</p>
+    </footer>
+</div>
+<script src="./script.js"></script>
   </body>
