@@ -33,3 +33,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+    const likeButtons = document.querySelectorAll(".main__button_like");
+  
+    likeButtons.forEach(button => {
+      button.addEventListener("click", function () {
+        if (this.classList.contains("main__button_like_active")) {
+          this.classList.remove("main__button_like_active");
+          this.style.backgroundImage = "url(../images/like-white.svg)"; // Imagen blanca
+        } else {
+          this.classList.add("main__button_like_active");
+          this.style.backgroundImage = "url(../images/like-active.jpeg)"; // Imagen negra
+        }
+      });
+    });
+  
+  
+

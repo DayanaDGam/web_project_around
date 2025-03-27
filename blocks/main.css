@@ -131,6 +131,7 @@
 
 .main__button_like_active {
   background-image: url(../images/like-active.jpeg);
+  filter: brightness(0);
 }
 
 .main__button_like {
@@ -141,6 +142,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   width: 19px;
+  filter: brightness(1);
 }
 
 @media screen and (max-width: 584px) {
