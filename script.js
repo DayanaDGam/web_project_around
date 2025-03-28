@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
       button.addEventListener("click", function () {
         if (this.classList.contains("main__button_like_active")) {
           this.classList.remove("main__button_like_active");
-          this.style.backgroundImage = "url(../images/like-white.svg)"; // Imagen blanca
+          this.style.backgroundImage = "url(../images/like-white.svg)"; 
         } else {
           this.classList.add("main__button_like_active");
-          this.style.backgroundImage = "url(../images/like-active.jpeg)"; // Imagen negra
+          this.style.backgroundImage = "url(../images/like-active.jpeg)"; 
         }
       });
     });
