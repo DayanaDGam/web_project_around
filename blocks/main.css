@@ -79,9 +79,7 @@
 .main__button_add {
   width: 150px;
   height: 50px;
-  align-self: end;
-  width: 150;
-  height: 50;
+  align-self: center;
   top: 194px;
   left: 930px;
 
