@@ -15,11 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const gallery = document.querySelector(".main__gallery");
   const template = document.querySelector("#main__template");
 
-  // FUNCIONES
+  const popupImage = document.querySelector(".popup_image");
+  const popupImageEl = popupImage.querySelector(".popup__image");
+  const popupCaption = popupImage.querySelector(".popup__caption");
+  const popupImageClose = popupImage.querySelector(".popup__button_close");
+
   function inicializarTarjetasExistentes() {
     const tarjetas = document.querySelectorAll(".main__gallery-card");
 
     tarjetas.forEach((card) => {
+      const img = card.querySelector(".main__gallery-image");
       const likeBtn = card.querySelector(".main__button_like");
       const trashBtn = card.querySelector(".main__button_trash");
 
@@ -32,6 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       trashBtn.addEventListener("click", function () {
         card.remove();
+      });
+
+      img.addEventListener("click", () => {
+        popupImageEl.src = img.src;
+        popupImageEl.alt = img.alt;
+        popupCaption.textContent = img.alt;
+        popupImage.classList.add("popup_opened");
       });
     });
   }
@@ -59,10 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
       card.remove();
     });
 
+    img.addEventListener("click", () => {
+      popupImageEl.src = img.src;
+      popupImageEl.alt = img.alt;
+      popupCaption.textContent = img.alt;
+      popupImage.classList.add("popup_opened");
+    });
+
     gallery.prepend(clone);
   }
 
-  // EVENTOS DE BOTONES Y FORMULARIOS
   editButton.addEventListener("click", function () {
     inputName.value = profileName.textContent;
     inputAbout.value = profileAbout.textContent;
@@ -79,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", () => {
       popupEdit.classList.remove("popup_opened");
       popupAdd.classList.remove("popup_opened");
+      popupImage.classList.remove("popup_opened");
     });
   });
 
@@ -97,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
     popupAdd.classList.remove("popup_opened");
   });
 
-  // Ejecutar al cargar
+  popupImageClose.addEventListener("click", () => {
+    popupImage.classList.remove("popup_opened");
+  });
+
   inicializarTarjetasExistentes();
 });
-
