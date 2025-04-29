@@ -13,26 +13,29 @@
   <body>
     <div class="page">
       <div class="popup">
-        <button type="button" class="popup__button popup__button_close"> X </button>
-        <form class="popup__container">
-          <h2 class="popup__subtitle">Editar Perfil</h2>
+        <form class="popup__form">
+          <h2 class="popup__subtitle">Editar perfil</h2>
           <fieldset class="popup__content">
-            <input
-              type="text"
-              class="popup__input popup__input_name"
-              placeholder="Nombre"
-            />
-            <input
-              type="text"
-              class="popup__input popup__input_about"
-              placeholder="Acerca de mí"
-            />
+            <input type="text" class="popup__input popup__input_name" placeholder="Nombre" />
+            <input type="text" class="popup__input popup__input_about" placeholder="Acerca de mí" />
           </fieldset>
           <fieldset class="popup__content">
-            <button type="submit" class="popup__button popup__button_save">
-              Guardar
-            </button>
+            <button type="submit" class="popup__button popup__button_save">Guardar</button>
           </fieldset>
+          <button type="button" class="popup__button_close"></button>
+        </form>
+      </div>
+      <div class="popup">
+        <form class="popup__add">
+          <h2 class="popup__subtitle">Nuevo Lugar</h2>
+          <fieldset class="popup__content">
+            <input type="text" class="popup__input popup__input_title" placeholder="Título" />
+            <input type="text" class="popup__input popup__input_image" placeholder="Enlace a la imagen" />
+          </fieldset>
+          <fieldset class="popup__content">
+            <button type="submit" class="popup__button popup__button_save">Guardar</button>
+          </fieldset>
+          <button type="button" class="popup__button_close"></button>
         </form>
       </div>
       <header class="header">
@@ -58,6 +61,7 @@
         <div class="main__gallery">
             <div class="main__gallery-card">
             <img class="main__gallery-image" src="./images/valle_yosemite.png" alt="Valle de Yosemite">
+            <button type="button" class="main__button main__button_trash"></button> 
             <div class="main__gallery-content">
                 <p class="main__gallery-paragraph">Valle de Yosemite</p>
                 <button type="button" class="main__button main__button_like"></button>
@@ -65,6 +69,7 @@
         </div>
         <div class="main__gallery-card">
             <img class="main__gallery-image" src="./images/lago_louise.png" alt="Lago Louise">
+            <button type="button" class="main__button main__button_trash"></button>
             <div class="main__gallery-content">
                 <p class="main__gallery-paragraph">Lago Louise</p>
                 <button type="button" class="main__button main__button_like"></button>
@@ -72,6 +77,7 @@
         </div>
         <div class="main__gallery-card">
             <img class="main__gallery-image" src="./images/montanas_calvas.png" alt="Montañas Calvas">
+            <button type="button" class="main__button main__button_trash"></button>
             <div class="main__gallery-content">
                 <p class="main__gallery-paragraph">Montañas Calvas</p>
                 <button type="button" class="main__button main__button_like"></button>
@@ -79,6 +85,7 @@
         </div>
         <div class="main__gallery-card">
             <img class="main__gallery-image" src="./images/latemar.png" alt="Latemar">
+            <button type="button" class="main__button main__button_trash"></button>
             <div class="main__gallery-content">
                 <p class="main__gallery-paragraph">Latemar</p>
                 <button type="button" class="main__button main__button_like"></button>
@@ -86,6 +93,7 @@
         </div>
         <div class="main__gallery-card">
             <img class="main__gallery-image" src="./images/vanois_national_park.png" alt="Vanois Nationa Park">
+            <button type="button" class="main__button main__button_trash"></button>
             <div class="main__gallery-content">
                 <p class="main__gallery-paragraph">Vanois National Park</p>
                 <button type="button" class="main__button main__button_like"></button>
@@ -93,6 +101,7 @@
         </div>
         <div class="main__gallery-card">
             <img class="main__gallery-image" src="./images/lago_di_braies.png" alt="Lago Di Braies">
+            <button type="button" class="main__button main__button_trash"></button>
             <div class="main__gallery-content">
                 <p class="main__gallery-paragraph">Lago Di Braies</p>
                 <button type="button" class="main__button main__button_like"></button>
@@ -100,6 +109,14 @@
         </div>
         </div>
     </main>
+    <template id="main__template">
+      <div class="main__gallery-card">
+        <img class="main__gallery-image" src="" alt="" />
+        <p class="main__gallery-paragraph"></p>
+        <button class="main__button main__button_like"></button>
+        <button class="main__button main__button_trash"></button>
+      </div>
+    </template>
       <footer class="footer">
         <p class="footer__copyright">&#x00a9; 2025 Around The U.S.</p>
       </footer>

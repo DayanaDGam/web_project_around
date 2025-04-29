@@ -1,51 +1,103 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const popup = document.querySelector(".popup");
-    const editButton = document.querySelector(".main__button_edit");
-    const closeButton = document.querySelector(".popup__button_close");
+  const popupEdit = document.querySelectorAll(".popup")[0];
+  const editButton = document.querySelector(".main__button_edit");
+  const profileName = document.querySelector(".main__paragraph_name");
+  const profileAbout = document.querySelector(".main__paragraph_about");
+  const inputName = document.querySelector(".popup__input_name");
+  const inputAbout = document.querySelector(".popup__input_about");
+  const closeButtons = document.querySelectorAll(".popup__button_close");
 
-    
-    const profileName = document.querySelector(".main__paragraph_name");
-    const profileAbout = document.querySelector(".main__paragraph_about");
+  const popupAdd = document.querySelectorAll(".popup")[1];
+  const addButton = document.querySelector(".main__button_add");
+  const inputTitle = document.querySelector(".popup__input_title");
+  const inputImage = document.querySelector(".popup__input_image");
 
-    
-    const inputName = document.querySelector(".popup__input_name");
-    const inputAbout = document.querySelector(".popup__input_about");
+  const gallery = document.querySelector(".main__gallery");
+  const template = document.querySelector("#main__template");
 
-    
-    editButton.addEventListener("click", function () {
-        inputName.value = profileName.textContent; 
-        inputAbout.value = profileAbout.textContent; 
-        popup.style.display = "block"; 
-    });
+  // FUNCIONES
+  function inicializarTarjetasExistentes() {
+    const tarjetas = document.querySelectorAll(".main__gallery-card");
 
-    closeButton.addEventListener("click", function () {
-        popup.style.display = "none";
-    });
+    tarjetas.forEach((card) => {
+      const likeBtn = card.querySelector(".main__button_like");
+      const trashBtn = card.querySelector(".main__button_trash");
 
-    const saveButton = document.querySelector(".popup__button_save");
-    saveButton.addEventListener("click", function (event) {
-        event.preventDefault(); 
+      likeBtn.addEventListener("click", function () {
+        this.classList.toggle("main__button_like_active");
+        this.style.backgroundImage = this.classList.contains("main__button_like_active")
+          ? "url(../images/like-active.jpeg)"
+          : "url(../images/like-white.svg)";
+      });
 
-        profileName.textContent = inputName.value; 
-        profileAbout.textContent = inputAbout.value;
-
-        popup.style.display = "none";
-    });
-});
-
-    const likeButtons = document.querySelectorAll(".main__button_like");
-  
-    likeButtons.forEach(button => {
-      button.addEventListener("click", function () {
-        if (this.classList.contains("main__button_like_active")) {
-          this.classList.remove("main__button_like_active");
-          this.style.backgroundImage = "url(../images/like-white.svg)"; 
-        } else {
-          this.classList.add("main__button_like_active");
-          this.style.backgroundImage = "url(../images/like-active.jpeg)"; 
-        }
+      trashBtn.addEventListener("click", function () {
+        card.remove();
       });
     });
-  
-  
+  }
+
+  function agregarTarjeta(title, imageUrl) {
+    const clone = template.content.cloneNode(true);
+    const card = clone.querySelector(".main__gallery-card");
+    const img = card.querySelector(".main__gallery-image");
+    const text = card.querySelector(".main__gallery-paragraph");
+
+    img.src = imageUrl;
+    img.alt = title;
+    text.textContent = title;
+
+    const likeBtn = card.querySelector(".main__button_like");
+    likeBtn.addEventListener("click", function () {
+      this.classList.toggle("main__button_like_active");
+      this.style.backgroundImage = this.classList.contains("main__button_like_active")
+        ? "url(../images/like-active.jpeg)"
+        : "url(../images/like-white.svg)";
+    });
+
+    const trashBtn = card.querySelector(".main__button_trash");
+    trashBtn.addEventListener("click", () => {
+      card.remove();
+    });
+
+    gallery.prepend(clone);
+  }
+
+  // EVENTOS DE BOTONES Y FORMULARIOS
+  editButton.addEventListener("click", function () {
+    inputName.value = profileName.textContent;
+    inputAbout.value = profileAbout.textContent;
+    popupEdit.classList.add("popup_opened");
+  });
+
+  addButton.addEventListener("click", function () {
+    inputTitle.value = "";
+    inputImage.value = "";
+    popupAdd.classList.add("popup_opened");
+  });
+
+  closeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      popupEdit.classList.remove("popup_opened");
+      popupAdd.classList.remove("popup_opened");
+    });
+  });
+
+  const profileForm = popupEdit.querySelector("form");
+  profileForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    profileName.textContent = inputName.value;
+    profileAbout.textContent = inputAbout.value;
+    popupEdit.classList.remove("popup_opened");
+  });
+
+  const cardForm = popupAdd.querySelector("form");
+  cardForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    agregarTarjeta(inputTitle.value, inputImage.value);
+    popupAdd.classList.remove("popup_opened");
+  });
+
+  // Ejecutar al cargar
+  inicializarTarjetasExistentes();
+});
 

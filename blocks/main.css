@@ -141,6 +141,16 @@
   width: 19px;
 }
 
+.main__button_trash {
+  border: none;
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: url(../images/trash.svg);
+}
+
 @media screen and (max-width: 584px) {
   main {
     max-width: 320px;
