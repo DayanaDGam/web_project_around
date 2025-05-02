@@ -121,6 +121,13 @@
   font-weight: 900;
 }
 
+.main__gallery-paragraph.main__gallery-vanois {
+  max-width: calc(100% - 30px);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .main__gallery-paragraph_text_overflow {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -132,6 +139,8 @@
 }
 
 .main__button_like {
+  position: absolute;
+  right: 10px;
   border: none;
   height: 19px;
   background-image: url(../images/like-white.svg);
