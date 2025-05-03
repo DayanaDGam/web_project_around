@@ -30,6 +30,21 @@
   z-index: 10;
 }
 
+.popup__button_close-image {
+  position: absolute;
+  background-image: url(../images/close_icone_image.png);
+  top: 20px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
 .popup__form,
 .popup__add {
   position: relative;
@@ -88,6 +103,7 @@
 
 .popup__container_image {
   max-width: fit-content;
+  position: relative;
   margin: auto;
 }
 
@@ -95,4 +111,9 @@
   justify-content: center;
   width: 100%;
   max-width: 400px
+}
+
+.popup__caption {
+  color: #fff;
+  font-size: "Inter-Black", sans-serif; ;
 }
