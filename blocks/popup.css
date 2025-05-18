@@ -117,3 +117,16 @@
   color: #fff;
   font-size: "Inter-Black", sans-serif; ;
 }
+
+.popup__input_type_error {
+  border-bottom: 1px solid #f00;
+}
+
+.popup__error_visible {
+  color: #f00;
+}
+
+.popup__button_disabled {
+  background-color: #c4c4c4;
+  cursor: default;
+}

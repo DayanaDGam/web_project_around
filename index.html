@@ -13,27 +13,43 @@
   <body>
     <div class="page">
       <div class="popup">
-        <form class="popup__form">
+        <form class="popup__form" id="formEdit" novalidate>
           <h2 class="popup__subtitle">Editar perfil</h2>
           <fieldset class="popup__content">
-            <input type="text" class="popup__input popup__input_name" placeholder="Nombre" />
-            <input type="text" class="popup__input popup__input_about" placeholder="Acerca de mí" />
+            <label class="popup__field">
+            <input type="text" class="popup__input popup__input_name popup__input_type_error" placeholder="Nombre" minlength="2" maxlength="40" id="name-input" required />
+            <span class="popup__input-error name-input-error popup__error_visible">Completa este campo</span>
+            <span class="popup__input-error name-input-error popup__error_visible">Aumenta la longitud de este texto a 2 caracteres o más, actualmente el texto tiene 1 carácter</span>
+          </label>
+          <label class="popup__field">
+            <input type="text" class="popup__input popup__input_about" placeholder="Acerca de mí" minlength="2" maxlength="200" id="about-input" required/>
+            <span class="popup__input-error about-input-error popup__error_visible">Completa este campo</span>
+            <span class="popup__input-error about-input-error popup__error_visible">Aumenta la longitud de este texto a 2 caracteres o más, actualmente el texto tiene 1 carácter</span>
+          </label>
           </fieldset>
           <fieldset class="popup__content">
-            <button type="submit" class="popup__button popup__button_save">Guardar</button>
+            <button type="submit" class="popup__button popup__button_save popup__button_disabled">Guardar</button>
           </fieldset>
           <button type="button" class="popup__button_close">X</button>
         </form>
       </div>
       <div class="popup">
-        <form class="popup__add">
+        <form class="popup__add" id="formAdd" novalidate>
           <h2 class="popup__subtitle">Nuevo Lugar</h2>
           <fieldset class="popup__content">
-            <input type="text" class="popup__input popup__input_title" placeholder="Título" />
-            <input type="text" class="popup__input popup__input_image" placeholder="Enlace a la imagen" />
+            <label class="popup__field">
+            <input type="text" class="popup__input popup__input_title popup__input_type_error" placeholder="Título" minlength="2" maxlength="30" id="title-input" required/>
+            <span class="popup__input-error title-input-error popup__error_visible">Completa este campo</span>
+            <span class="popup__input-error title-input-error popup__error_visible">Aumenta la longitud de este texto a 2 caracteres o más, actualmente el texto tiene 1 carácter</span>
+          </label>
+          <label class="popup__field">
+            <input type="url" class="popup__input popup__input_image popup__input_type_error" placeholder="URL a la imagen" id="url-input" required/>
+            <span class="popup__input-error url-input-error popup__error_visible">Completa este campo</span>
+            <span class="popup__input-error url-input-error popup__error_visible"> Introduce una URL</span>
+          </label>
           </fieldset>
           <fieldset class="popup__content">
-            <button type="submit" class="popup__button popup__button_save">Guardar</button>
+            <button type="submit" class="popup__button popup__button_save popup__button_disabled" disabled>Guardar</button>
           </fieldset>
           <button type="button" class="popup__button_close">X</button>
         </form>
@@ -129,5 +145,6 @@
       </footer>
     </div>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
