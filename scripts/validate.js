@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    checkFormValidity(); // al cargar
+    checkFormValidity();
   });
 });
 

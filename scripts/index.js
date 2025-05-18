@@ -122,3 +122,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   inicializarTarjetasExistentes();
 });
+
+document.querySelectorAll('.popup').forEach(popup => {
+  popup.addEventListener('mousedown', (event) => {
+    if (event.target === popup) {
+      closePopup(popup);
+    }
+  });
+});
+
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
+}
