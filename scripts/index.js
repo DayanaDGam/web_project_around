@@ -134,3 +134,13 @@ document.querySelectorAll('.popup').forEach(popup => {
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
 }
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
+  }
+});
+
