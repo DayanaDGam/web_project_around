@@ -1,30 +1,44 @@
-
 document.addEventListener("DOMContentLoaded", () => {
-  // Configuración de validación para formularios
   const formConfigs = [
     {
       formId: "formEdit",
       inputs: [
-        { id: "name-input", minLength: 2, maxLength: 40 },
-        { id: "about-input", minLength: 2, maxLength: 200 }
+        { id: "name-input", errorId: "name-error", minLength: 2 },
+        { id: "about-input", errorId: "about-error", minLength: 2 }
       ]
     },
     {
       formId: "formAdd",
       inputs: [
-        { id: "title-input", minLength: 2, maxLength: 30 },
-        { id: "url-input", type: "url" }
+        { id: "title-input", errorId: "title-error", minLength: 2 },
+        { id: "url-input", errorId: "url-error", type: "url" }
       ]
     }
   ];
 
   formConfigs.forEach(config => {
     const form = document.getElementById(config.formId);
+    if (!form) return;
+
     const submitButton = form.querySelector("button[type='submit']");
 
+    const validateInput = (input, errorEl, rules) => {
+      let message = "";
+      if (input.validity.valueMissing) {
+        message = "Completa este campo";
+      } else if (input.validity.tooShort) {
+        message = `Aumenta la longitud de este texto a ${rules.minLength} caracteres o más`;
+      } else if (rules.type === "url" && input.validity.typeMismatch) {
+        message = "Introduce una URL válida";
+      }
+
+      errorEl.textContent = message;
+      input.classList.toggle("popup__input_type_error", !!message);
+    };
+
     const checkFormValidity = () => {
-      const allValid = config.inputs.every(inputConf => {
-        const input = document.getElementById(inputConf.id);
+      const allValid = config.inputs.every(conf => {
+        const input = document.getElementById(conf.id);
         return input.checkValidity();
       });
 
@@ -32,28 +46,28 @@ document.addEventListener("DOMContentLoaded", () => {
       submitButton.classList.toggle("popup__button_disabled", !allValid);
     };
 
-    config.inputs.forEach(inputConf => {
-      const input = document.getElementById(inputConf.id);
+    config.inputs.forEach(conf => {
+      const input = document.getElementById(conf.id);
+      const errorEl = document.getElementById(conf.errorId);
 
       input.addEventListener("input", () => {
-        if (!input.validity.valid) {
-          input.classList.add("popup__input_type_error");
-        } else {
-          input.classList.remove("popup__input_type_error");
-        }
+        validateInput(input, errorEl, conf);
         checkFormValidity();
       });
     });
 
-    // Al cargar la página
-    checkFormValidity();
-
-    // También previene el envío si el formulario no es válido
     form.addEventListener("submit", (e) => {
       if (!form.checkValidity()) {
         e.preventDefault();
-        checkFormValidity();
+        config.inputs.forEach(conf => {
+          const input = document.getElementById(conf.id);
+          const errorEl = document.getElementById(conf.errorId);
+          validateInput(input, errorEl, conf);
+        });
       }
     });
+
+    checkFormValidity(); // al cargar
   });
 });
+

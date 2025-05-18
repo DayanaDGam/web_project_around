@@ -121,9 +121,17 @@
 .popup__input_type_error {
   border-bottom: 1px solid #f00;
 }
+.popup__input-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+  min-height: 16px;
+}
 
 .popup__error_visible {
   color: #f00;
+  font-size: small;
 }
 
 .popup__button_disabled {

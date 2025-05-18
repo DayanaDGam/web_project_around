@@ -18,13 +18,11 @@
           <fieldset class="popup__content">
             <label class="popup__field">
             <input type="text" class="popup__input popup__input_name popup__input_type_error" placeholder="Nombre" minlength="2" maxlength="40" id="name-input" required />
-            <span class="popup__input-error name-input-error popup__error_visible">Completa este campo</span>
-            <span class="popup__input-error name-input-error popup__error_visible">Aumenta la longitud de este texto a 2 caracteres o más, actualmente el texto tiene 1 carácter</span>
+            <span class="popup__input-error" id="name-error"></span>
           </label>
           <label class="popup__field">
             <input type="text" class="popup__input popup__input_about" placeholder="Acerca de mí" minlength="2" maxlength="200" id="about-input" required/>
-            <span class="popup__input-error about-input-error popup__error_visible">Completa este campo</span>
-            <span class="popup__input-error about-input-error popup__error_visible">Aumenta la longitud de este texto a 2 caracteres o más, actualmente el texto tiene 1 carácter</span>
+            <span class="popup__input-error" id="about-error"></span>
           </label>
           </fieldset>
           <fieldset class="popup__content">
@@ -39,13 +37,11 @@
           <fieldset class="popup__content">
             <label class="popup__field">
             <input type="text" class="popup__input popup__input_title popup__input_type_error" placeholder="Título" minlength="2" maxlength="30" id="title-input" required/>
-            <span class="popup__input-error title-input-error popup__error_visible">Completa este campo</span>
-            <span class="popup__input-error title-input-error popup__error_visible">Aumenta la longitud de este texto a 2 caracteres o más, actualmente el texto tiene 1 carácter</span>
+            <span class="popup__input-error" id="title-error"></span>
           </label>
           <label class="popup__field">
             <input type="url" class="popup__input popup__input_image popup__input_type_error" placeholder="URL a la imagen" id="url-input" required/>
-            <span class="popup__input-error url-input-error popup__error_visible">Completa este campo</span>
-            <span class="popup__input-error url-input-error popup__error_visible"> Introduce una URL</span>
+            <span class="popup__input-error" id="url-error"></span>
           </label>
           </fieldset>
           <fieldset class="popup__content">
