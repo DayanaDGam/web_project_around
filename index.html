@@ -12,12 +12,12 @@
   </head>
   <body>
     <div class="page">
-      <div class="popup">
+      <div class="popup" id="popupEdit">
         <form class="popup__form" id="formEdit" novalidate>
           <h2 class="popup__subtitle">Editar perfil</h2>
           <fieldset class="popup__content">
             <label class="popup__field">
-            <input type="text" class="popup__input popup__input_name popup__input_type_error" placeholder="Nombre" minlength="2" maxlength="40" id="name-input" required />
+            <input type="text" class="popup__input popup__input_name" placeholder="Nombre" minlength="2" maxlength="40" id="name-input" required />
             <span class="popup__input-error" id="name-error"></span>
           </label>
           <label class="popup__field">
@@ -31,12 +31,12 @@
           <button type="button" class="popup__button_close">X</button>
         </form>
       </div>
-      <div class="popup">
+      <div class="popup" id="popupAdd">
         <form class="popup__add" id="formAdd" novalidate>
           <h2 class="popup__subtitle">Nuevo Lugar</h2>
           <fieldset class="popup__content">
             <label class="popup__field">
-            <input type="text" class="popup__input popup__input_title popup__input_type_error" placeholder="Título" minlength="2" maxlength="30" id="title-input" required/>
+            <input type="text" class="popup__input popup__input_title" placeholder="Título" minlength="2" maxlength="30" id="title-input" required/>
             <span class="popup__input-error" id="title-error"></span>
           </label>
           <label class="popup__field">
