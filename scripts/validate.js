@@ -69,5 +69,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     checkFormValidity();
   });
-});
 
+  // Función para limpiar errores al abrir el popup
+  function resetFormValidation(formElement) {
+    const inputList = formElement.querySelectorAll('.popup__input');
+    const errorList = formElement.querySelectorAll('.popup__input-error');
+    const submitButton = formElement.querySelector("button[type='submit']");
+
+    inputList.forEach(input => {
+      input.classList.remove('popup__input_type_error');
+    });
+
+    errorList.forEach(span => {
+      span.textContent = '';
+    });
+
+    const isValid = formElement.checkValidity();
+    submitButton.disabled = !isValid;
+    submitButton.classList.toggle('popup__button_disabled', !isValid);
+  }
+
+  // Apertura del popup de edición (ajusta IDs según tu HTML)
+  const openEditPopupBtn = document.querySelector('.main__button_edit');
+  const editPopup = document.querySelector('#popupEdit');
+  const editForm = document.getElementById('formEdit');
+
+  openEditPopupBtn.addEventListener('click', () => {
+    editPopup.classList.add('popup_opened');
+    resetFormValidation(editForm);
+  });
+
+  // Apertura del popup de añadir (opcional)
+  const openAddPopupBtn = document.querySelector('.main__button_add');
+  const addPopup = document.querySelector('#popupAdd');
+  const addForm = document.getElementById('formAdd');
+
+  openAddPopupBtn?.addEventListener('click', () => {
+    addPopup.classList.add('popup_opened');
+    resetFormValidation(addForm);
+  });
+
+  // Cerrar el popup al hacer clic fuera
+  document.querySelectorAll('.popup').forEach(popup => {
+    popup.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('popup_opened')) {
+        popup.classList.remove('popup_opened');
+      }
+    });
+  });
+
+  // Cerrar el popup con la tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.popup.popup_opened').forEach(popup => {
+        popup.classList.remove('popup_opened');
+      });
+    }
+  });
+});
