@@ -48,12 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openPopup(popupElement) {
-    popupElement.classList.add('popup_opened');
-  }
+  popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', handleEscClose);
+}
 
   function closePopup(popupElement) {
-    popupElement.classList.remove('popup_opened');
+  popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleEscClose);
+}
+
+  function handleEscClose(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    if (openedPopup) {
+      closePopup(openedPopup);
+    }
   }
+}
 
   function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -104,13 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
     closeImagePopupButton.addEventListener('click', () => closePopup(imagePopup));
   }
 
-  // Validación
   const formValidatorAdd = new FormValidator(validationConfig, formElement);
   const formValidatorEdit = new FormValidator(validationConfig, formEditElement);
 
   formValidatorAdd.enableValidation();
   formValidatorEdit.enableValidation();
 
-  // Renderizar tarjetas iniciales
   initialCards.forEach(renderCard);
+
+  document.querySelectorAll('.popup').forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target === popup) {
+      closePopup(popup);
+    }
+  });
+});
 });
