@@ -1,6 +1,3 @@
-// utils.js
-
-// Configuración para la validación de formularios
 
 export const validationConfig = {
   inputSelector: '.popup__input',
@@ -10,9 +7,6 @@ export const validationConfig = {
   errorClass: 'popup__input-error_active'
 };
 
-
-  
-  // Tarjetas iniciales (opcional, si usas precargadas)
   export const initialCards = [
     {
     name: "Valle de Yosemite",
