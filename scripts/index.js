@@ -1,75 +1,92 @@
-// index.js
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-import { validationConfig, initialCards } from './utils.js';
+import { validationConfig } from './utils.js';
 
-// DOM: Contenedor donde se agregan las tarjetas
-const cardList = document.querySelector('.cards__list');
+document.addEventListener('DOMContentLoaded', () => {
+  const cardList = document.querySelector('.main__gallery');
+  const formElement = document.querySelector('#formAdd');
+  const nameInput = formElement.querySelector('#title-input');
+  const linkInput = formElement.querySelector('#url-input');
+  const addCardButton = document.querySelector('.main__button_add');
+  const popup = document.querySelector('#popupAdd');
+  const closePopupButton = popup.querySelector('.popup__button_close');
 
-// DOM: Formulario y campos
-const formElement = document.querySelector('.form');
-const nameInput = formElement.querySelector('#place-name');
-const linkInput = formElement.querySelector('#place-link');
+  const editProfileButton = document.querySelector('.main__button_edit');
+  const popupEdit = document.querySelector('#popupEdit');
+  const closeEditPopupButton = popupEdit.querySelector('.popup__button_close');
+  const formEditElement = document.querySelector('#formEdit');
 
-// DOM: Botón abrir/cerrar popup, etc. (si aplica)
-const addCardButton = document.querySelector('.add-button');
-const popup = document.querySelector('.popup');
-const closePopupButton = popup.querySelector('.popup__close');
+  function handleCardClick(name, link) {
+    console.log(`Mostrar imagen de ${name}: ${link}`);
+  }
 
-// Función: Crea una nueva tarjeta
-function createCard(data) {
-  const card = new Card(
-    data,
-    '#card-template',
-    handleCardClick
-  );
-  return card.generateCard();
+  function createCard(data) {
+    const card = new Card(data, '#main__template', handleCardClick);
+    return card.generateCard();
+  }
+
+  function renderCard(data) {
+    const cardElement = createCard(data);
+    cardList.prepend(cardElement);
+  }
+
+  function openPopup(popupElement) {
+    popupElement.classList.add('popup_opened');
+  }
+
+  function closePopup(popupElement) {
+    popupElement.classList.remove('popup_opened');
+  }
+
+  function handleFormSubmit(evt) {
+    evt.preventDefault();
+    const newCardData = {
+      name: nameInput.value,
+      link: linkInput.value
+    };
+    renderCard(newCardData);
+    formElement.reset();
+    formValidatorAdd.resetValidation();
+    closePopup(popup);
+  }
+
+  if (formElement) {
+    formElement.addEventListener('submit', handleFormSubmit);
+  }
+
+  if (addCardButton) {
+    addCardButton.addEventListener('click', () => openPopup(popup));
+  }
+
+  if (closePopupButton) {
+    closePopupButton.addEventListener('click', () => closePopup(popup));
+  }
+
+  if (editProfileButton) {
+    editProfileButton.addEventListener('click', () => openPopup(popupEdit));
+  }
+
+  if (closeEditPopupButton) {
+    closeEditPopupButton.addEventListener('click', () => closePopup(popupEdit));
+  }
+
+  if (formEditElement) {
+  formEditElement.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const name = formEditElement.querySelector('#name-input').value;
+    const about = formEditElement.querySelector('#about-input').value;
+
+    document.querySelector('.main__paragraph_name').textContent = name;
+    document.querySelector('.main__paragraph_about').textContent = about;
+
+    closePopup(popupEdit);
+  });
 }
 
-// Función: Renderiza una tarjeta en la lista
-function renderCard(data) {
-  const cardElement = createCard(data);
-  cardList.prepend(cardElement); // prepend para que la más nueva esté arriba
-}
+  // Validación
+  const formValidatorAdd = new FormValidator(validationConfig, formElement);
+  const formValidatorEdit = new FormValidator(validationConfig, formEditElement);
 
-// Función: Acción al hacer clic en imagen (popup, etc.)
-function handleCardClick(name, link) {
-  // Aquí podrías abrir un popup, por ejemplo
-  console.log(`Mostrar imagen de ${name}: ${link}`);
-}
-
-// Evento: Envío de formulario
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  const newCardData = {
-    name: nameInput.value,
-    link: linkInput.value
-  };
-  renderCard(newCardData);
-  formElement.reset();
-  formValidator.resetValidation();
-  closePopup(); // Si tienes popup
-}
-
-// Función: Abrir el popup
-function openPopup() {
-  popup.classList.add('popup_opened');
-}
-
-// Función: Cerrar el popup
-function closePopup() {
-  popup.classList.remove('popup_opened');
-}
-
-// Listeners
-formElement.addEventListener('submit', handleFormSubmit);
-addCardButton.addEventListener('click', openPopup);
-closePopupButton.addEventListener('click', closePopup);
-
-// Inicializa validación
-const formValidator = new FormValidator(validationConfig, formElement);
-formValidator.enableValidation();
-
-// Renderiza tarjetas iniciales (si las usas)
-initialCards.forEach(renderCard);
-
+  formValidatorAdd.enableValidation();
+  formValidatorEdit.enableValidation();
+});

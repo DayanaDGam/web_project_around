@@ -1,27 +1,42 @@
 // utils.js
 
 // Configuración para la validación de formularios
+
 export const validationConfig = {
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    inactiveButtonClass: 'form__submit_disabled',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__input-error_active'
-  };
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button_save',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error_active'
+};
+
+
   
   // Tarjetas iniciales (opcional, si usas precargadas)
   export const initialCards = [
     {
-      name: 'Montañas',
-      link: 'https://example.com/montanas.jpg'
-    },
-    {
-      name: 'Playa',
-      link: 'https://example.com/playa.jpg'
-    },
-    {
-      name: 'Bosque',
-      link: 'https://example.com/bosque.jpg'
-    }
-  ];
+    name: "Valle de Yosemite",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
+  },
+  {
+    name: "Lago Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
+  },
+  {
+    name: "Montañas Calvas",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
+  },
+  {
+    name: "Parque Nacional de la Vanoise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
+  },
+];
   
