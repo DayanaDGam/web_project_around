@@ -41,7 +41,7 @@
           </label>
           <label class="popup__field">
             <input type="url" class="popup__input popup__input_image popup__input_type_error" placeholder="URL a la imagen" id="url-input" required/>
-            <span id="url-input-error" class="popup__input-error"></span>
+            <span class="popup__input-error" id="url-error"></span>
           </label>
           </fieldset>
           <fieldset class="popup__content">
@@ -54,7 +54,9 @@
         <img src="./images/Vector.png" alt="logo-page" class="header__image" />
       </header>
       <main class="main">
-        <div class="main__profile">
+  <section class="profile">
+    <!-- Aquí va tu sección de perfil con botón de editar, etc. -->
+     <div class="main__profile">
           <div class="main__content-image">
             <img
               src="./images/Dayana Dávila-Photoroom.jpg"
@@ -70,72 +72,28 @@
           </div>
           <button type="button" class="main__button main__button_add"> + </button>
         </div>
-        <div class="main__gallery">
-            <div class="main__gallery-card">
-            <img class="main__gallery-image" src="./images/valle_yosemite.png" alt="Valle de Yosemite">
-            <button type="button" class="main__button main__button_trash"></button> 
-            <div class="main__gallery-content">
-                <p class="main__gallery-paragraph">Valle de Yosemite</p>
-                <button type="button" class="main__button main__button_like"></button>
-            </div>
-        </div>
-        <div class="main__gallery-card">
-            <img class="main__gallery-image" src="./images/lago_louise.png" alt="Lago Louise">
-            <button type="button" class="main__button main__button_trash"></button>
-            <div class="main__gallery-content">
-                <p class="main__gallery-paragraph">Lago Louise</p>
-                <button type="button" class="main__button main__button_like"></button>
-            </div>
-        </div>
-        <div class="main__gallery-card">
-            <img class="main__gallery-image" src="./images/montanas_calvas.png" alt="Montañas Calvas">
-            <button type="button" class="main__button main__button_trash"></button>
-            <div class="main__gallery-content">
-                <p class="main__gallery-paragraph">Montañas Calvas</p>
-                <button type="button" class="main__button main__button_like"></button>
-            </div>
-        </div>
-        <div class="main__gallery-card">
-            <img class="main__gallery-image" src="./images/latemar.png" alt="Latemar">
-            <button type="button" class="main__button main__button_trash"></button>
-            <div class="main__gallery-content">
-                <p class="main__gallery-paragraph">Latemar</p>
-                <button type="button" class="main__button main__button_like"></button>
-            </div>
-        </div>
-        <div class="main__gallery-card">
-            <img class="main__gallery-image" src="./images/vanois_national_park.png" alt="Vanois Nationa Park">
-            <button type="button" class="main__button main__button_trash"></button>
-            <div class="main__gallery-content">
-                <p class="main__gallery-paragraph main__gallery-vanois">Vanois National Park</p>
-                <button type="button" class="main__button main__button_like"></button>
-            </div>
-        </div>
-        <div class="main__gallery-card">
-            <img class="main__gallery-image" src="./images/lago_di_braies.png" alt="Lago Di Braies">
-            <button type="button" class="main__button main__button_trash"></button>
-            <div class="main__gallery-content">
-                <p class="main__gallery-paragraph">Lago Di Braies</p>
-                <button type="button" class="main__button main__button_like"></button>
-            </div>
-        </div>
-        </div>
-    </main>
-    <template id="main__template">
-      <div class="main__gallery-card">
-        <img class="main__gallery-image" src="" alt="" />
-        <p class="main__gallery-paragraph"></p>
-        <button class="main__button main__button_like"></button>
-        <button class="main__button main__button_trash"></button>
-      </div>
-    </template>
-    <div class="popup popup_image">
-      <div class="popup__container popup__container_image">
-        <button class="popup__button_close popup__button_close-image" type="button"></button>
-        <img class="popup__image" src="" alt="">
-        <p class="popup__caption"></p>
-      </div>
+  </section>
+  <section class="gallery">
+    <div class="main__gallery"></div>
+  </section>
+  <template id="main__template">
+  <div class="main__gallery-card">
+    <img class="main__gallery-image" src="" alt="">
+    <button type="button" class="main__button main__button_trash"></button>
+    <div class="main__gallery-content">
+      <p class="main__gallery-paragraph"></p>
+      <button type="button" class="main__button main__button_like"></button>
     </div>
+  </div>
+</template>
+  <div class="popup popup_image">
+    <div class="popup__container popup__container_image">
+      <button class="popup__button_close popup__button_close-image" type="button"></button>
+      <img class="popup__image" src="" alt="">
+      <p class="popup__caption"></p>
+    </div>
+  </div>
+</main>
       <footer class="footer">
         <p class="footer__copyright">&#x00a9; 2025 Around The U.S.</p>
       </footer>

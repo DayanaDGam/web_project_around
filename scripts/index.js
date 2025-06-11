@@ -3,6 +3,15 @@ import { FormValidator } from './FormValidator.js';
 import { validationConfig } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const initialCards = [
+    { name: 'Valle de Yosemite', link: './images/valle_yosemite.png' },
+    { name: 'Lago Louise', link: './images/lago_louise.png' },
+    { name: 'Montañas Calvas', link: './images/montanas_calvas.png' },
+    { name: 'Latemar', link: './images/latemar.png' },
+    { name: 'Vanois National Park', link: './images/vanois_national_park.png' },
+    { name: 'Lago Di Braies', link: './images/lago_di_braies.png' }
+  ];
+
   const cardList = document.querySelector('.main__gallery');
   const formElement = document.querySelector('#formAdd');
   const nameInput = formElement.querySelector('#title-input');
@@ -16,8 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeEditPopupButton = popupEdit.querySelector('.popup__button_close');
   const formEditElement = document.querySelector('#formEdit');
 
+  const imagePopup = document.querySelector('.popup_image');
+  const imagePopupImg = imagePopup.querySelector('.popup__image');
+  const imagePopupCaption = imagePopup.querySelector('.popup__caption');
+  const closeImagePopupButton = imagePopup.querySelector('.popup__button_close-image');
+
   function handleCardClick(name, link) {
-    console.log(`Mostrar imagen de ${name}: ${link}`);
+    imagePopupImg.src = link;
+    imagePopupImg.alt = name;
+    imagePopupCaption.textContent = name;
+    openPopup(imagePopup);
   }
 
   function createCard(data) {
@@ -71,17 +88,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (formEditElement) {
-  formEditElement.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const name = formEditElement.querySelector('#name-input').value;
-    const about = formEditElement.querySelector('#about-input').value;
+    formEditElement.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      const name = formEditElement.querySelector('#name-input').value;
+      const about = formEditElement.querySelector('#about-input').value;
 
-    document.querySelector('.main__paragraph_name').textContent = name;
-    document.querySelector('.main__paragraph_about').textContent = about;
+      document.querySelector('.main__paragraph_name').textContent = name;
+      document.querySelector('.main__paragraph_about').textContent = about;
 
-    closePopup(popupEdit);
-  });
-}
+      closePopup(popupEdit);
+    });
+  }
+
+  if (closeImagePopupButton) {
+    closeImagePopupButton.addEventListener('click', () => closePopup(imagePopup));
+  }
 
   // Validación
   const formValidatorAdd = new FormValidator(validationConfig, formElement);
@@ -89,4 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   formValidatorAdd.enableValidation();
   formValidatorEdit.enableValidation();
+
+  // Renderizar tarjetas iniciales
+  initialCards.forEach(renderCard);
 });
