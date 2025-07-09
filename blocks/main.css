@@ -130,6 +130,10 @@
   margin-left: 10px;
 }
 
+.main__button_like_active {
+  background-image: url(../images/like-active.jpeg); 
+}
+
 .main__button_trash {
   position: absolute;
   top: 10px;
