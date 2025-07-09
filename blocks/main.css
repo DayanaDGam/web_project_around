@@ -5,11 +5,12 @@
 }
 
 .main__profile {
-  display: grid;
-  grid-template-columns: 120px repeat(3, 1fr);
-  grid-template-rows: 120px;
-  grid-gap: 30px;
-  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 40px;
 }
 
 .main__content-image {
@@ -20,6 +21,7 @@
   width: 100%;
   border-radius: 100%;
 }
+
 
 .main__content-paragraph {
   max-width: 450px;
@@ -37,12 +39,11 @@
 }
 
 .main__paragraph_name {
-  grid-column: 1 / 4;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: bold;
   margin: 0;
-  font-size: 42px;
-  line-height: 48px;
-  font-weight: 600;
-  padding-top: 22px;
+  color: white;
 }
 
 .main__paragraph_about {
@@ -52,6 +53,7 @@
   font-size: 18px;
   padding-bottom: 21px;
 }
+
 
 .main__button {
   border: 2px inset;
@@ -64,61 +66,67 @@
 .main__button:hover {
   opacity: 0.5;
 }
-
 .main__button_edit {
   width: 24px;
   height: 24px;
-  align-self: end;
-  margin-bottom: 7px;
-  top: 196px;
-  left: 741px;
-  border-width: 1px;
-
+  background-image: url("../images/Edit\ Button.svg"); 
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  border: 1px solid #fff;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .main__button_add {
-  width: 150px;
-  height: 50px;
-  align-self: center;
-  top: 194px;
-  left: 930px;
-
+  width: 120px;
+  height: 40px;
+  font-size: 18px;
+  color: white;
+  background-color: transparent;
+  border: 1px solid #fff;
+  cursor: pointer;
 }
 
 .main__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 20px;
   max-width: 880px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 17px;
-  justify-content: space-between;
+  margin: auto;
 }
 
 .main__gallery-card {
   position: relative;
-  max-width: 32%;
   background-color: #fff;
   color: #000;
   border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .main__gallery-image {
   width: 100%;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  height: 282px;
+  object-fit: cover;
 }
 
 .main__gallery-content {
   display: flex;
   justify-content: space-between;
-  max-width: 250px;
-  margin: 20px auto;
+  align-items: center;
+  padding: 20px;
 }
 
 .main__gallery-paragraph {
   font-family: "Inter-Black", sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
   font-weight: 900;
+  word-break: break-word;
+  flex: 1;
 }
 
 .main__gallery-paragraph.main__gallery-vanois {
@@ -209,11 +217,11 @@
   }
 
   .main__gallery {
-    max-width: 290px;
-    margin: auto;
-    gap: 20px;
-    justify-items: center;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px 17px;
+}
 
   .main__gallery-card {
     max-width: 100%;
