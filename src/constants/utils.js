@@ -1,14 +1,13 @@
-
 export const validationConfig = {
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button_save',
+  submitButtonSelector: 'button[type="submit"]', // ✅ Cambiado aquí
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 };
 
-  export const initialCards = [
-    {
+export const initialCards = [
+  {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
   },
@@ -33,4 +32,3 @@ export const validationConfig = {
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
-  
