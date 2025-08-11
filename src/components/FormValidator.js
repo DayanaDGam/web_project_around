@@ -54,7 +54,6 @@ export class FormValidator {
       });
     });
 
-    // Control inicial
     this._toggleButtonState();
   }
 
