@@ -5,7 +5,10 @@ import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { validationConfig, initialCards } from '../constants/utils.js';
-import { Api } from '../components/Api.js';
+
+import fetchUser from '../components/Api.js';
+
+fetchUser();
 
 document.addEventListener('DOMContentLoaded', () => {
   const userInfo = new UserInfo({
