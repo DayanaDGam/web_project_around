@@ -17,7 +17,6 @@ export class UserInfo {
     if (typeof about === "string") this._aboutElement.textContent = about;
   }
 
-  // ✅ NUEVO
   setAvatar(url) {
     if (this._avatarElement && typeof url === "string") {
       this._avatarElement.src = url;
