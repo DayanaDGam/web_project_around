@@ -1,9 +1,10 @@
 export class Card {
-  constructor(data, templateSelector, handleCardClick) {
+  constructor(data, templateSelector, handleCardClick, handleDeleteClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _getTemplate() {
@@ -21,8 +22,7 @@ export class Card {
     });
 
     this._deleteButton.addEventListener('click', () => {
-      this._cardElement.remove();
-      this._cardElement = null;
+      this._handleDeleteClick(this._cardElement);
     });
 
     this._imageElement.addEventListener('click', () => {

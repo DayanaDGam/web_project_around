@@ -1,7 +1,8 @@
 export class UserInfo {
-  constructor({ nameSelector, aboutSelector }) {
+  constructor({ nameSelector, aboutSelector, avatarSelector }) {
     this._nameElement = document.querySelector(nameSelector);
     this._aboutElement = document.querySelector(aboutSelector);
+    this._avatarElement = avatarSelector ? document.querySelector(avatarSelector) : null;
   }
 
   getUserInfo() {
@@ -12,7 +13,15 @@ export class UserInfo {
   }
 
   setUserInfo({ name, about }) {
-    this._nameElement.textContent = name;
-    this._aboutElement.textContent = about;
+    if (typeof name === "string") this._nameElement.textContent = name;
+    if (typeof about === "string") this._aboutElement.textContent = about;
+  }
+
+  // ✅ NUEVO
+  setAvatar(url) {
+    if (this._avatarElement && typeof url === "string") {
+      this._avatarElement.src = url;
+      this._avatarElement.alt = "Avatar de usuario";
+    }
   }
 }

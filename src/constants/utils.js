@@ -1,10 +1,11 @@
 export const validationConfig = {
   inputSelector: '.popup__input',
-  submitButtonSelector: 'button[type="submit"]', // ✅ Cambiado aquí
-  inactiveButtonClass: 'popup__button_disabled',
+  submitButtonSelector: 'button[type="submit"]',
+  inactiveButtonClass: 'popup__button_disabled',   // asegúrate que exista en tu CSS
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 };
+
 
 export const initialCards = [
   {

@@ -1,199 +1,226 @@
- .popup {
+ /* OVERLAY (no lo traslades) */
+.popup {
   display: none;
+  position: fixed;
+  inset: 0;                /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
   height: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: fixed;
-  align-content: center;
-  z-index: 1;
-  color: #000;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popup_opened {
-  display: flex;
-}
-
-.popup__button_close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 24px;
-  height: 24px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.popup__button_close-image {
-  position: absolute;
-  background-image: url(../images/close_icone_image.png);
-  top: 20px;
-  right: 10px;
-  width: 24px;
-  height: 24px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 10;
-}
-
-.popup__form,
-.popup__add {
-  position: relative;
-  margin: auto;
-  width: 100%;
-  max-width: 430px;
-  height: auto;
-  background-color: #fff;
-  border-radius: 10px;
-  padding-bottom: 20px;
-}
-
-.popup__subtitle {
-  font-family: "Inter-Black", sans-serif;
-  font-size: 24px;
-  margin: 0 36px;
-  padding: 34px 0 20px;
-}
-
-.popup__content {
-  width: 90%;
-  max-width: 360px;
-  margin: auto;
-  border: 0;
-  padding: 0;
-}
-
-.popup__input {
-  display: flex;
-  width: 100%;
-  border: 0;
-  margin-bottom: 30px;
-  border-bottom: 1px solid #000;
-}
-
-.popup__input_name,
-.popup__input_about {
-  width: 100%;
-  height: 27px;
-  border: 1px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 0%;
-}
-
-.popup__button_save,
-.popup__button_add {
-  width: 100%;
-  background-color: #000;
-  padding: 10px;
-  margin-bottom: 20px;
-  color: #fff;
-  font-family: "Inter-Black", sans-serif;
-}
-
-.popup__container_image {
-  max-width: fit-content;
-  position: relative;
-  margin: auto;
-}
-
-.popup__image {
-  justify-content: center;
-  width: 100%;
-  max-width: 400px
 }
 
 .popup__caption {
   color: #fff;
-  font-size: "Inter-Black", sans-serif; ;
+  font-family: "Inter-Black", sans-serif;
 }
 
-.popup__input_type_error {
-  border-bottom: 1px solid #f00;
+/* Al abrir, centramos el CONTENIDO con flex */
+.popup_opened {
+  display: flex;
+  justify-content: center; /* centro horizontal */
+  align-items: center;     /* centro vertical */
 }
 
-.popup__field {
+/* Caja del popup (confirmación y demás) */
+.popup__container,
+.popup__form,
+.popup__add {
   position: relative;
+  width: 100%;
+  max-width: 430px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  margin: 0;               /* quita el margin:auto; ya centramos con flex */
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.popup__button_close::before {
+  content: '✕';       /* símbolo X */
+  font-size: 18px;
+  color: #000;        /* negro */
+  font-weight: bold;
+  display: block;
+  line-height: 1;
+}
+
+/* Efecto hover */
+.popup__button_close:hover::before {
+  color: #5c5c5c;     /* gris oscuro al pasar el mouse */
+}
+
+.popup__button_close {
+  position: absolute;
+  top: 14px;      /* distancia desde la parte superior del contenedor */
+  right: 14px;    /* distancia desde el lado derecho del contenedor */
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Si quieres que SOLO la confirmación use esta caja genérica */
+.popup_type_confirm .popup__container {
+  max-width: 430px; /* opcional, ya cubierto arriba */
+}
+
+/* Tipografía global */
+:root { --font-sans: "Inter", "Inter-Black", Arial, sans-serif; }
+
+body, .page {
+  font-family: var(--font-sans);
+}
+
+/* El overlay no debe resetear la fuente */
+.popup,
+.popup_opened {
+  font-family: inherit;
+  color: #000;               /* texto negro dentro de la caja blanca */
+}
+
+/* Caja de los popups: hereda y ajusta títulos/botones */
+.popup__container,
+.popup__form,
+.popup__add {
+  font-family: inherit;
+}
+
+.popup__subtitle {
+  font-family: "Inter-Black", "Inter", Arial, sans-serif;
+  font-weight: 800;          /* similar a Black */
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 36px;
+  padding: 34px 0 20px;
+}
+
+.popup__input {
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.popup__button_save,
+.popup__button_add {
+  font-family: "Inter-Black", "Inter", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* Arreglo previo que estaba mal escrito */
+.popup__caption {
+  color: #fff;
+  font-family: "Inter-Black", "Inter", Arial, sans-serif;
+}
+
+/* caja centrada ya la tienes con .popup/.popup_opened */
+
+/* contenedor interno del formulario */
+.popup__form,
+.popup__add {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+/* título */
+.popup__subtitle {
+  font-family: "Inter-Black", "Inter", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  text-align: left;          /* cámbialo a center si lo quieres centrado */
+}
+
+/* layout del contenido */
+.popup__content {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px; 
+  gap: 18px;
+}
+
+/* campo + mensaje de error */
+.popup__field { display: flex; flex-direction: column; }
+
+/* INPUT “underline” */
+.popup__input {
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid #c8c8c8;
+  padding: 10px 0 8px;
+  font: inherit;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.popup__input::placeholder {
+  color: #9aa0a6;
+  opacity: 1;
+}
+
+.popup__input:focus {
+  border-bottom-color: #111;
+  box-shadow: 0 1px 0 0 #111;
+}
+
+/* error */
+.popup__input_type_error {
+  border-bottom-color: #e53935;
+  box-shadow: 0 1px 0 0 #e53935;
 }
 
 .popup__input-error {
-  color: red;
+  color: #e53935;
   font-size: 12px;
-  line-height: 1.2;
-  margin-top: 4px; 
+  margin-top: 6px;
 }
 
-
-.popup__error_visible {
-  color: #f00;
-  font-size: small;
-}
-
-.popup__button_disabled {
-  background-color: #c4c4c4;
-  cursor: default;
-}
-
-@media screen and (max-width: 480px) {
-  .popup__form,
-  .popup__add {
-    width: 90%;
-    max-width: 300px;
-    padding-bottom: 16px;
-    border-radius: 8px;
-  }
-
-  .popup__subtitle {
-    font-size: 20px;
-    margin: 0 20px;
-    padding: 24px 0 16px;
-  }
-
-  .popup__content {
-    width: 90%;
-    max-width: 260px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-  .popup__input {
-    margin-bottom: 20px;
-    font-size: 14px;
-  }
-
-  .popup__button_save,
+/* BOTÓN: gris al pasar el mouse → negro al hacer click/activo */
+.popup__button_save,
 .popup__button_add {
   width: 100%;
-  box-sizing: border-box;
-  font-size: 14px;
-  padding: 10px;
-  margin: 0 auto 16px;
-  display: block;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: "Inter-Black", "Inter", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  background: #111;     /* base: negro */
+  color: #fff;
+  transition: background .2s ease, opacity .2s ease, transform .02s ease;
+  cursor: pointer;
 }
 
-  .popup__button_close,
-  .popup__button_close-image {
-    top: 12px;
-    right: 12px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .popup__caption {
-    font-size: 12px;
-    padding: 8px;
-  }
+/* hover gris */
+.popup__button_save:hover:not(:disabled),
+.popup__button_add:hover:not(:disabled) {
+  background: #5c5c5c;
 }
+
+/* feedback al hacer click */
+.popup__button_save:active:not(:disabled),
+.popup__button_add:active:not(:disabled) {
+  background: #000;
+  transform: translateY(1px);
+}
+
+/* estado deshabilitado (lo controla tu validador con disabled + clase) */
+.popup__button_disabled,
+.popup__button_save:disabled,
+.popup__button_add:disabled {
+  background: #c4c4c4;
+  color: #fff;
+  opacity: .9;
+  cursor: not-allowed;
+}
+

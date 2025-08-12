@@ -4,24 +4,6 @@
   padding-top: 40px;
 }
 
-.main__profile {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding-bottom: 40px;
-}
-
-.main__content-image {
-  width: 120px;
-  flex-shrink: 0;
-}
-
-.main__profile-image {
-  width: 100%;
-  border-radius: 100%;
-}
 
 .main__content-paragraph {
   flex: 1;
@@ -144,6 +126,41 @@
   background-size: contain;
   border: none;
 }
+
+.main__profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.main__content-image {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.main__profile-image {
+  width: 8rem;            
+  height: 8rem;           
+  border-radius: 50%;     
+  object-fit: cover;      
+  display: block;      
+}
+.main__content-image { position: relative; }
+.avatar-edit-btn {
+  position: absolute;
+  right: 8px; bottom: 8px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #000; color:#fff; border:0;
+  display: none; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.main__content-image:hover .avatar-edit-btn { display: flex; }
+.avatar-edit-btn::before { content: "✎"; font-size: 14px; line-height: 1; }
+
 
 @media screen and (max-width: 584px) {
   .main {

@@ -77,6 +77,37 @@
         <img src="#" alt="Imagen Ampliada" class="popup__image" />
         <p class="popup__caption"></p>
       </div>
+</div>
+<div class="popup" id="popupAvatar">
+  <div class="popup__form">
+    <button type="button" class="popup__button_close"></button>
+    <h2 class="popup__subtitle">Cambiar foto de perfil</h2>
+
+    <form class="popup__content" name="avatar-form" novalidate>
+      <div class="popup__field">
+        <input
+          type="url"
+          name="avatar"
+          id="avatar-input"
+          class="popup__input"
+          placeholder="https://ejemplo.com/imagen.jpg"
+          required
+        />
+        <span class="popup__input-error" id="avatar-input-error"></span>
+      </div>
+
+      <button type="submit" class="popup__button popup__button_save">Guardar</button>
+    </form>
+  </div>
+</div>
+<div class="popup popup_type_confirm">
+  <div class="popup__container">
+    <button type="button" class="popup__button popup__button_close popup__button_close-image"></button>
+    <form class="popup__form" name="confirm-form">
+      <h2 class="popup__subtitle">¿Estás seguro?</h2>
+      <button type="submit" class="popup__button popup__button_save">Sí</button>
+    </form>
+  </div>
     </div><template id="main__template">
       <article class="main__gallery-card">
         <img src="#" alt="" class="main__gallery-image" />
