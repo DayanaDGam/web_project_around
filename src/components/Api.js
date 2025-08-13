@@ -1,6 +1,6 @@
 class Api {
   constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
+    this._baseUrl = baseUrl;  
     this._headers = headers;
   }
 
@@ -10,12 +10,15 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
-      .then(this._checkResponse);
+    return fetch(`${this._baseUrl}users/me/`, {
+      headers: this._headers
+    }).then(this._checkResponse);
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, { headers: this._headers })
+    return fetch(`${this._baseUrl}cards/`, {
+      headers: this._headers
+    })
       .then(this._checkResponse)
       .then((data) => {
         if (Array.isArray(data)) return data;
@@ -24,16 +27,8 @@ class Api {
       });
   }
 
-  updateUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify({ name, about })
-    }).then(this._checkResponse);
-  }
-
   addNewCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}cards/`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ name, link })
@@ -41,28 +36,36 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+    return fetch(`${this._baseUrl}cards/${cardId}/`, {
       method: "DELETE",
       headers: this._headers
     }).then(this._checkResponse);
   }
 
   likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}cards/${cardId}/likes/`, {
       method: "PUT",
       headers: this._headers
     }).then(this._checkResponse);
   }
 
   dislikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}cards/${cardId}/likes/`, {
       method: "DELETE",
       headers: this._headers
     }).then(this._checkResponse);
   }
 
+  updateUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}users/me/`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name, about })
+    }).then(this._checkResponse);
+  }
+
   updateAvatar(avatarUrl) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
+    return fetch(`${this._baseUrl}users/me/avatar/`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ avatar: avatarUrl })
@@ -77,3 +80,5 @@ export const api = new Api({
     "Content-Type": "application/json"
   }
 });
+
+export default Api;
