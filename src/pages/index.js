@@ -104,10 +104,14 @@ function createCard(data) {
 }
 
 const section = new Section(
-  { renderer: (cardData) => section.addItem(createCard(cardData)) },
+  {
+    renderer: (cardData) => {
+      const el = createCard(cardData);
+      section.addItem(el, { append: true });
+    }
+  },
   ".main__gallery"
 );
-
 profileEditButton.addEventListener("click", () => {
   const current = userInfo.getUserInfo();
   popupEditProfile.setInputValues({ name: current.name, about: current.about });
